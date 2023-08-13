@@ -138,7 +138,7 @@ def CompareIndividuals(ind1, ind2):
 	else: 
 		output+=' - FULL NAME MIS-MATCH : '+firstname_1+' vs '+firstname_2+'\n'
 	
-	#### TODO: Handle instances where one or other date is not set, possibly "about", "Abt." and "March" vs "Mar" too?
+	#### FIXME: Handle instances where one or other date is not set
 	if ind1.get_birth_year()==ind2.get_birth_year():
 		retvalue=retvalue+0.1 
 	else: 
@@ -212,7 +212,7 @@ OUTPUT_ALL=False
 #### TODO: Check marriage records of individuals (dates/places)
 #### TODO: Check places of birth / death for individuals
 
-#### TODO: See if we can detect private / anonymous items and ignore?
+#### FIXME: See if we can detect private / anonymous items and ignore?
 
 print('\npyGEDCCOMpare')
 print('=============')

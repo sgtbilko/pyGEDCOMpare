@@ -482,31 +482,6 @@ class IndividualElement(Element):
 
         return False
 
-    #MOT: 2022-12-21 - added match based on another indivudal element
-    def is_match(self, ind):
-		#### TODO: not functional - considering using work in compare code
-        """
-        Checks if this individual matches another individual
-        'ind' is the individual to check for a match against.
-        Returns a simple % confidence based on match to:
-        Surname - 20%
-        Initial - 10%
-        Forename - 20%
-        Year of Birth - 10%
-        Year of Death - 10%
-        Date of Birth - 15%
-        Date of Death - 15%
-        
-        :type ind: IndividualElement
-        :rtype: int
-        """
-        
-        match = 0
-
-        #TODO: Actually try matching!
-
-        return match
-
     def criteria_match(self, criteria):
 		# MOT: 2022.12.21 Added gender match
 		# MOT: 2022.12.21 Added birth_date match
