@@ -138,19 +138,30 @@ def CompareIndividuals(ind1, ind2):
 	else: 
 		output+=' - FULL NAME MIS-MATCH : '+firstname_1+' vs '+firstname_2+'\n'
 	
-	#### FIXME: Handle instances where one or other date is not set
-	if ind1.get_birth_year()==ind2.get_birth_year():
+	# check birth years
+	YoB_1=ind1.get_birth_year()
+	YoB_2=ind2.get_birth_year()
+	if YoB_1==YoB_2:
 		retvalue=retvalue+0.1 
+	elif YoB_1==-1 or YoB_2==-1: 
+		retvalue+=0.05
+		output+=' - BIRTH YEAR KNOWN VS UNKNOWN : '+str(YoB_1)+' vs '+str(YoB_2)+'\n'
 	else: 
-		output+=' - BIRTH YEAR MIS-MATCH : '+str(ind1.get_birth_year())+' vs '+str(ind2.get_birth_year())+'\n'
+		output+=' - BIRTH YEAR MIS-MATCH : '+str(YoB_1)+' vs '+str(YoB_2)+'\n'
 		
-	if ind1.get_death_year()==ind2.get_death_year(): 
+	# check death years
+	YoD_1=ind1.get_death_year()
+	YoD_2=ind2.get_death_year()
+	if YoD_1==YoD_2: 
 		retvalue=retvalue+0.1 
+	elif YoD_1==-1 or YoD_2==-1: 
+		retvalue+=0.05
+		output+=' - DEATH YEAR KNOWN VS UNKNOWN : '+str(YoD_1)+' vs '+str(YoD_2)+'\n'
 	else: 
-		output+=' - DEATH YEAR MIS-MATCH : '+str(ind1.get_death_year())+' vs '+str(ind2.get_death_year())+'\n'
+		output+=' - DEATH YEAR MIS-MATCH : '+str(YoD_1)+' vs '+str(YoD_2)+'\n'
 	
-#	# All of the above must match (i.e. 50% confidence) to continue, otherwise reject the match
-	if retvalue<0.5: 
+#	# All of the above must match (i.e. 40% confidence) to continue, otherwise reject the match
+	if retvalue<0.4: 
 		if DEBUGMODE>0: print('>>>Comparing-> Match insufficient at '+str(retvalue))
 		return 0
 	
